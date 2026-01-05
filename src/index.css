@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+
+@layer base {
+  :root {
+    /* Warm, calming palette - sage green focus */
+    --background: 45 30% 98%;
+    --foreground: 160 15% 15%;
+
+    --card: 45 25% 96%;
+    --card-foreground: 160 15% 15%;
+
+    --popover: 45 25% 96%;
+    --popover-foreground: 160 15% 15%;
+
+    /* Sage green primary */
+    --primary: 150 25% 42%;
+    --primary-foreground: 45 30% 98%;
+
+    /* Warm cream secondary */
+    --secondary: 40 30% 92%;
+    --secondary-foreground: 160 15% 25%;
+
+    --muted: 45 20% 90%;
+    --muted-foreground: 160 10% 45%;
+
+    /* Soft coral accent */
+    --accent: 15 70% 65%;
+    --accent-foreground: 45 30% 98%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 45 30% 98%;
+
+    --border: 45 20% 88%;
+    --input: 45 20% 88%;
+    --ring: 150 25% 42%;
+
+    --radius: 1rem;
+
+    /* Custom tokens */
+    --safe: 150 40% 45%;
+    --caution: 40 80% 55%;
+    --warning: 15 75% 55%;
+
+    --gradient-warm: linear-gradient(135deg, hsl(40 30% 95%) 0%, hsl(45 25% 92%) 100%);
+    --gradient-sage: linear-gradient(135deg, hsl(150 25% 45%) 0%, hsl(160 30% 38%) 100%);
+    
+    --shadow-soft: 0 4px 20px -4px hsl(160 15% 15% / 0.08);
+    --shadow-card: 0 2px 12px -2px hsl(160 15% 15% / 0.06);
+    --shadow-hover: 0 8px 30px -6px hsl(160 15% 15% / 0.12);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 160 15% 8%;
+    --foreground: 45 20% 95%;
+
+    --card: 160 15% 12%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 160 15% 12%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 150 30% 55%;
+    --primary-foreground: 160 15% 8%;
+
+    --secondary: 160 15% 18%;
+    --secondary-foreground: 45 20% 90%;
+
+    --muted: 160 12% 20%;
+    --muted-foreground: 45 15% 60%;
+
+    --accent: 15 65% 60%;
+    --accent-foreground: 160 15% 8%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 45 20% 95%;
+
+    --border: 160 12% 22%;
+    --input: 160 12% 22%;
+    --ring: 150 30% 55%;
+
+    --safe: 150 45% 50%;
+    --caution: 40 75% 60%;
+    --warning: 15 70% 60%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  .status-safe {
+    @apply bg-[hsl(var(--safe)/0.15)] text-[hsl(var(--safe))] border-[hsl(var(--safe)/0.3)];
+  }
+
+  .status-caution {
+    @apply bg-[hsl(var(--caution)/0.15)] text-[hsl(var(--caution))] border-[hsl(var(--caution)/0.3)];
+  }
+
+  .status-warning {
+    @apply bg-[hsl(var(--warning)/0.15)] text-[hsl(var(--warning))] border-[hsl(var(--warning)/0.3)];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
